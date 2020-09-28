@@ -22,23 +22,32 @@ class StatusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('My status'),
-        backgroundColor: Color(0xff075E55),
-        leading: Icon(Icons.arrow_back),
-      ),
-      body: ListView.separated(
-        itemBuilder: (BuildContext context, int index) {
-          return buildCardTile(
-              statusData.getViews(index), statusData.getTimePosted(index));
-        },
-        separatorBuilder: (BuildContext context, int index) => Divider(),
-        itemCount: statusData.sizeOfStatusBank(),
-      ),
+        appBar: AppBar(
+          title: Text('My status'),
+          backgroundColor: Color(0xff075E55),
+          leading: Icon(Icons.arrow_back),
+        ),
+        body: Container(
+            child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Expanded(child: _buildListTile()),
+          ],
+        )));
+  }
+
+  Widget buildCardTile(String views, String time) {
+    return ListTile(
+      leading: CircleAvatar(
+        radius: 30.0,
+        backgroundImage:NetworkImage('https://picsum.photos/250?image=9'),),
+      title: Text(views),
+      subtitle: Text(time),
+      trailing: Icon(Icons.more_vert),
     );
   }
 
-  Widget _buildListTileView() {
+  Widget _buildListTile() {
     return ListView.separated(
       itemBuilder: (BuildContext context, int index) {
         return buildCardTile(
@@ -49,23 +58,5 @@ class StatusPage extends StatelessWidget {
     );
   }
 
-  Widget buildCardTile(String views, String time) {
-    return ListTile(
-      title: Text(views),
-      subtitle: Text(time),
-      trailing: Icon(Icons.more_vert),
-    );
-  }
-
-  List buildProfileImage() {
-    List images = [];
-    for (int statusIndex = 0;
-        statusIndex < statusData.sizeOfStatusBank();
-        statusIndex++) {
-      images.add(CircleAvatar(
-        child: Image.network(statusData.getImgUrl(statusIndex)),
-      ));
-    }
-    return images;
-  }
+  
 }
