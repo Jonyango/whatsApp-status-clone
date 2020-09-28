@@ -1,7 +1,7 @@
 # whatsappstatusclone
 
 Week 1 assignment.
-![Screenshot](https://drive.google.com/drive/u/0/folders/1llMKlIRcS62TBPYURwcZqK74NjUj1Ipj)
+![Screenshot](https://github.com/Jonyango/whatsApp-status-clone/blob/master/lib/assets/Screenshot_20200928-151400.png
 
 ## Goal.
  -Working with ListView Flutter Layout.
